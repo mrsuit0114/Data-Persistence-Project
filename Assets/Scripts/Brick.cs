@@ -35,7 +35,9 @@ public class Brick : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        onDestroyed.Invoke(PointValue);
+        //Debug.Log("beforeinvoke");
+        onDestroyed.Invoke(PointValue);  // 이벤트리스너에 저장된 메서드에 인자를 전달하는 것 같네
+        //Debug.Log("afterinvoke");
         
         //slight delay to be sure the ball have time to bounce
         Destroy(gameObject, 0.2f);

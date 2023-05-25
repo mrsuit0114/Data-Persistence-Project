@@ -10,6 +10,7 @@ public class MenuUIHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     public TMP_InputField inputFiled_PlayerName;
+
     public void StartNew()
     {
         DataManager.Instance.inputName(inputFiled_PlayerName.text);
@@ -25,4 +26,8 @@ public class MenuUIHandler : MonoBehaviour
         Application.Quit(); // Unity 플레이어를 종료하는 원본 코드
 #endif
     }
+    /*public void WriteBestPlayer()
+    {
+        DataManager.Instance.bestPlayerScoreText.text = (DataManager.Instance.bestPlayer == "") ? "Unknown: " + DataManager.Instance.bestScore : DataManager.Instance.bestPlayer + ": " + DataManager.Instance.bestScore;
+    }*/  // brick도 보면 UI에서 안하고 자체적으로 처리하는거보니 규모가 작아서그러나 아직 어디까지 역할을 나눠야할지 모르겠음
 }

@@ -12,10 +12,11 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text BestScoreText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
-    private int m_Points;
+    public int m_Points;
     
     private bool m_GameOver = false;
 
@@ -37,6 +38,7 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+        WriteBestPlayer();
     }
 
     private void Update()
@@ -56,6 +58,7 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
+            // DataManager.Instance.SaveRecord(); 한번만 호출해야되는게 계속하는구나
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -67,11 +70,21 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+        //Debug.Log("ADDPOINT");
     }
 
     public void GameOver()
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+        DataManager.Instance.SaveRecord();  //여기서 한번만 호출하도록
+    }
+
+    public void WriteBestPlayer()
+    {
+        string bestPlayer = DataManager.Instance.bestPlayer=="" ? "Unknown" : DataManager.Instance.bestPlayer;
+        int bestScore = DataManager.Instance.bestScore;
+        BestScoreText.text =  bestPlayer + ": " + bestScore;
+        Debug.Log("wirtebestplayer");
     }
 }
