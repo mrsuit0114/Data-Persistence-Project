@@ -78,13 +78,14 @@ public class MainManager : MonoBehaviour
         m_GameOver = true;
         GameOverText.SetActive(true);
         DataManager.Instance.SaveRecord();  //여기서 한번만 호출하도록
+        WriteBestPlayer();
     }
 
     public void WriteBestPlayer()
     {
         string bestPlayer = DataManager.Instance.bestPlayer=="" ? "Unknown" : DataManager.Instance.bestPlayer;
         int bestScore = DataManager.Instance.bestScore;
-        BestScoreText.text =  bestPlayer + ": " + bestScore;
-        Debug.Log("wirtebestplayer");
+        BestScoreText.text =  "Best Score : "+ bestPlayer + " : " + bestScore;
+        //Debug.Log("wirtebestplayer");
     }
 }
