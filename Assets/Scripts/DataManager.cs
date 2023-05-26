@@ -25,8 +25,7 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);  // 씬이 변경될 때 파괴하지 않겠다
         LoadRecord();
         //todo textbestscore
-        bestPlayerScoreText.text ="Best Score : " + (bestPlayer=="" ? "Unknown" : bestPlayer) + " : " + bestScore;  //초기값이 "", 랑 0이구나
-        
+        writeMenuBestPlayerScore();
     }
     public void inputName(string name)
     {
@@ -160,4 +159,9 @@ public class DataManager : MonoBehaviour
         rankers.Add((bestPlayer=="") ? "Unknown" : bestPlayer, bestScore);
         return rankers;
     }*/
+
+    public void writeMenuBestPlayerScore()
+    {
+        bestPlayerScoreText.text = "Best Score : " + (bestPlayer == "" ? "Unknown" : bestPlayer) + " : " + bestScore;  //초기값이 "", 랑 0이구나
+    }
 }
