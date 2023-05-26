@@ -73,6 +73,7 @@ public class DataManager : MonoBehaviour
             data.bestScore = score;
             bestPlayer = playerName;  //누락했네
             bestScore = score; // 누락
+            scoreRecord = data.scoreRecord;
             //Debug.Log(playerName + mainManager.m_Points);
         }
         string json = JsonConvert.SerializeObject(data);
