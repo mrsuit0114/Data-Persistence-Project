@@ -81,7 +81,7 @@ public class MainManager : MonoBehaviour
         WriteBestPlayer();
     }
 
-    public void WriteBestPlayer()
+    public void WriteBestPlayer()  // 최고점수 및 플레이어를 받아서 텍스트 갱신하는 메서드
     {
         string bestPlayer = DataManager.Instance.bestPlayer=="" ? "Unknown" : DataManager.Instance.bestPlayer;
         int bestScore = DataManager.Instance.bestScore;
